@@ -12,13 +12,13 @@ class Solution {
         // }
         // return ans.size();
 
-        int uniqueCount = 1;
+        int k = 1;
         for(int i=0; i<n; i++){
-            if(nums[i] != nums[uniqueCount-1]){
-                nums[uniqueCount]  = nums[i];
-                uniqueCount++;
+            if(nums[i] != nums[k-1]){
+                nums[k]  = nums[i];
+                k++;
             }
         }
-        return uniqueCount;
+        return k;
     }
 }

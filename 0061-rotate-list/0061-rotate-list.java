@@ -1,26 +1,61 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
 class Solution {
+
+    public int length(ListNode head) {
+        int len = 0;
+        ListNode temp = head;
+
+        while (temp != null) {
+            temp = temp.next;
+            len++;
+        }
+
+        return len;
+    }
+
     public ListNode rotateRight(ListNode head, int k) {
+
+        if (head == null || head.next == null)
+            return head;
+
+        int n = length(head);
+        k %= n;
+
+        if (k == 0)
+            return head;
+
         ListNode slow = head;
         ListNode fast = head;
-        if(slow ==null || slow.next== null) return head;
-        int count =0;
-        while(slow != null){
-            count ++;
-            slow= slow.next;
+
+        for (int i = 1; i <= k + 1; i++) {
+            fast = fast.next;
         }
-        slow= head;
-        int rotations = k% count;
-        if(rotations ==0) return head;
-        for(int i=1; i<=rotations; i++){
-            fast= fast.next;
+
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
         }
-        while(fast.next!= null){
-            slow= slow.next;
-            fast= fast.next;
+
+        ListNode a = slow.next;
+        slow.next = null;
+
+        ListNode tail = a;
+
+        while (tail.next != null) {
+            tail = tail.next;
         }
-        ListNode h = slow.next;
-        slow.next= null;
-        fast.next= head;
-        return h;
+
+        tail.next = head;
+
+        return a;
     }
 }

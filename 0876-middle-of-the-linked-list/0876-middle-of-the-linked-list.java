@@ -10,16 +10,25 @@
  */
 class Solution {
     public ListNode middleNode(ListNode head) {
-        int length = 0;
-        ListNode temp = head;
-        while(temp !=null){
-            temp = temp.next;
-            length++;
+        // THIS IS A ONE PASS SOLUTION 
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        temp = head;
-        for(int i=1;i<=length/2;i++){
-            temp = temp.next;
-        }
-        return temp;
+        return slow;
+        // // THIS IS NOT A ONE PASS SOLUTION
+        // int length = 0;
+        // ListNode temp = head;
+        // while(temp !=null){
+        //     temp = temp.next;
+        //     length++;
+        // }
+        // temp = head;
+        // for(int i=1;i<=length/2;i++){
+        //     temp = temp.next;
+        // }
+        // return temp;
     }
 }

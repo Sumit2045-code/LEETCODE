@@ -3,7 +3,7 @@ class Solution {
         int n = nums.length;
         int sum = n*(n+1)/2;
         int arraySum = 0;
-        for(int ele : nums){
+        for(int ele: nums){
             arraySum = arraySum + ele;
         }
         return sum-arraySum;

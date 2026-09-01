@@ -12,7 +12,7 @@ class Solution {
                 count++;
                 st.pop();
             }
-            if(st.size()>0) count++; // very very important
+            if(st.size()>0) count++; // very very important kyuki next greater element milne pe bhi count ko 1 se bdhayenge 
             ans[i] = count;
             st.push(arr[i]);
         }

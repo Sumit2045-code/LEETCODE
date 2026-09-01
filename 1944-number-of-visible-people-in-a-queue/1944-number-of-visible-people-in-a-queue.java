@@ -7,7 +7,7 @@ class Solution {
         st.push(arr[n-1]);
         ans[n-1] = 0;
         for(int i=n-2;i>=0;i--){
-            int count = 0;
+            int count = 0;// count mtlb ki hm kitne elements ko dekh skte hai 
             while(st.size()>0 && st.peek()<=arr[i]){
                 count++;
                 st.pop();

@@ -1,13 +1,14 @@
 class Solution {
-    public void dfs(TreeNode root, ArrayList<Integer> ans){
+    static List<Integer> ans;
+    public void dfs(TreeNode root){
         if(root==null) return;
         ans.add(root.val);
-        dfs(root.left,ans);
-        dfs(root.right,ans);
+        dfs(root.left);
+        dfs(root.right);
     }
     public List<Integer> preorderTraversal(TreeNode root) {
-        ArrayList<Integer> ans = new ArrayList<>();
-        dfs(root,ans);
+        ans = new ArrayList<>();
+        dfs(root);
         return ans;
     }
 }

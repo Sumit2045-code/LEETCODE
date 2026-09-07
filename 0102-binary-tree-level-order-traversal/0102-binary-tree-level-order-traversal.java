@@ -1,35 +1,20 @@
 class Solution {
-    class Pair {
-        TreeNode node;
-        int level;
-        Pair(TreeNode node, int level) {
-            this.node = node;
-            this.level = level;
-        }
-    }
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> ans = new ArrayList<>();
-        if (root == null) return ans;
-        Queue<Pair> q = new LinkedList<>();
-        int currLevel = 0;
-        q.add(new Pair(root, 0));
-        List<Integer> list = new ArrayList<>();
-        while (q.size() > 0) {
-            Pair front = q.remove();
-            if (front.level != currLevel) {
-                ans.add(list);
-                list = new ArrayList<>();
-                currLevel++;
+        List<List<Integer>> ans=new ArrayList<>();
+        if(root==null) return ans;
+        Queue<TreeNode> q=new ArrayDeque<>();
+        q.add(root);
+        while(q.size()!=0){
+            int size=q.size();
+            List<Integer> list=new ArrayList<>();
+            for(int i=1;i<=size;i++){
+                TreeNode data=q.remove();
+                list.add(data.val);
+                if(data.left!=null) q.add(data.left);
+                if(data.right!=null) q.add(data.right);
             }
-            list.add(front.node.val);
-            if (front.node.left != null) {
-                q.add(new Pair(front.node.left, front.level + 1));
-            }
-            if (front.node.right != null) {
-                q.add(new Pair(front.node.right, front.level + 1));
-            }
+            ans.add(list);
         }
-        ans.add(list);
         return ans;
     }
 }
